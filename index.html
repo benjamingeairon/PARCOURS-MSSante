@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Formation Parcours MSSanté - Messagerie Sécurisée de Santé par APF France Handicap">
+    <title>Parcours MSSanté | APF France Handicap</title>
+
+    <!-- Polices (Poppins pour titres, DM Sans pour texte) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* ===== VARIABLES DE CHARTE GRAPHIQUE ===== */
+        :root {
+            --bleu-petrole: #00536A;
+            --jaune-orange: #F7A916;
+            --blanc: #FFFFFF;
+            --gris-clair: #F8F9FA;
+            --gris-texte: #333333;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 12px rgba(0, 83, 106, 0.15);
+            --transition: all 0.3s ease;
+        }
+
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'DM Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--gris-texte);
+            background-color: var(--blanc);
+            overflow-x: hidden;
+        }
+
+        /* ===== CONTAINERS ===== */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* ===== HEADER ===== */
+        header {
+            background: linear-gradient(135deg, var(--bleu-petrole) 0%, var(--bleu-petrole) 100%);
+            color: var(--blanc);
+            padding: 40px 0;
+            text-align: center;
+            box-shadow: var(--box-shadow);
+        }
+
+        .logo-container {
+            max-width: 200px;
+            margin: 0 auto 20px;
+        }
+
+        .logo-container img {
+            width: 100%;
+            height: auto;
+        }
+
+        header h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+        }
+
+        .tagline {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.2rem;
+            font-weight: 300;
+            opacity: 0.95;
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            background: linear-gradient(135deg, var(--blanc) 0%, var(--gris-clair) 100%);
+            padding: 60px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            color: var(--bleu-petrole);
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 1.1rem;
+            color: var(--gris-texte);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* ===== VISUEL THÉMATIQUE (Caducée) ===== */
+        .medical-icon-container {
+            margin: 40px auto;
+            width: 120px;
+            height: 120px;
+        }
+
+        .medical-icon {
+            width: 100%;
+            height: 100%;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+
+        /* ===== INFO SECTION ===== */
+        .info-section {
+            padding: 50px 0;
+            background-color: var(--blanc);
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        @media (max-width: 768px) {
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .dates-lieu {
+            background: var(--gris-clair);
+            padding: 30px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+
+        .dates-lieu h3 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--bleu-petrole);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+        }
+
+        .dates-lieu p {
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .dates-lieu strong {
+            color: var(--bleu-petrole);
+        }
+
+        /* ===== GOOGLE MAPS ===== */
+        .map-container {
+            background: var(--gris-clair);
+            padding: 20px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--box-shadow);
+            height: 100%;
+            min-height: 400px;
+        }
+
+        .map-container iframe {
+            width: 100%;
+            height: 100%;
+            min-height: 350px;
+            border: none;
+            border-radius: var(--border-radius);
+            filter: grayscale(20%) brightness(90%);
+        }
+
+        /* ===== PROGRAMME SECTION ===== */
+        .program-section {
+            padding: 60px 0;
+            background: linear-gradient(180deg, var(--blanc) 0%, var(--gris-clair) 100%);
+        }
+
+        .program-section h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 2rem;
+            color: var(--bleu-petrole);
+            text-align: center;
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .program-section h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background: var(--jaune-orange);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        /* ===== ACCORDÉON ===== */
+        .accordion-container {
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .accordion-toggle-all {
+            display: block;
+            width: 100%;
+            padding: 12px 20px;
+            background: var(--bleu-petrole);
+            color: var(--blanc);
+            border: none;
+            border-radius: var(--border-radius);
+            font-family: 'Poppins', sans-serif;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            margin-bottom: 20px;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .accordion-toggle-all:hover {
+            background: #003d50;
+        }
+
+        .accordion-item {
+            margin-bottom: 15px;
+            border-radius: var(--border-radius);
+            overflow: hidden;
+            box-shadow: var(--box-shadow);
+            border: 1px solid rgba(0, 83, 106, 0.2);
+        }
+
+        .accordion-header {
+            width: 100%;
+            padding: 20px 25px;
+            background: var(--bleu-petrole);
+            color: var(--blanc);
+            border: none;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.1rem;
+            font-weight: 500;
+            transition: var(--transition);
+        }
+
+        .accordion-header:hover {
+            background: #003d50;
+        }
+
+        .accordion-icon {
+            font-size: 1.5rem;
+            font-weight: 300;
+            transition: var(--transition);
+        }
+
+        .accordion-item.active .accordion-icon {
+            transform: rotate(45deg);
+        }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+            background: var(--blanc);
+            padding: 0 25px;
+            color: var(--gris-texte);
+        }
+
+        .accordion-content.active {
+            max-height: 1000px;
+            padding: 25px;
+        }
+
+        .accordion-content h3 {
+            font-family: 'Poppins', sans-serif;
+            color: var(--bleu-petrole);
+            margin-bottom: 15px;
+            font-size: 1.3rem;
+        }
+
+        .accordion-content p {
+            margin-bottom: 12px;
+            line-height: 1.7;
+        }
+
+        .accordion-content strong {
+            color: var(--bleu-petrole);
+        }
+
+        .module-meta {
+            display: flex;
+            gap: 20px;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+        }
+
+        .module-meta span {
+            background: var(--jaune-orange);
+            color: var(--blanc);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        /* ===== TÉLÉCHARGEMENTS ===== */
+        .download-section {
+            padding: 50px 0;
+            background: var(--blanc);
+            text-align: center;
+        }
+
+        .download-section h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 1.8rem;
+            color: var(--bleu-petrole);
+            margin-bottom: 30px;
+        }
+
+        .btn-download {
+            display: inline-block;
+            padding: 15px 30px;
+            background: var(--bleu-petrole);
+            color: var(--blanc);
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 500;
+            border-radius: var(--border-radius);
+            transition: var(--transition);
+            box-shadow: var(--box-shadow);
+            font-size: 1.1rem;
+        }
+
+        .btn-download:hover {
+            background: #003d50;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 15px rgba(0, 83, 106, 0.25);
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--bleu-petrole);
+            color: var(--blanc);
+            padding: 30px 0;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        footer p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+
+        /* ===== ACCESSIBILITÉ ===== */
+        a:focus,
+        button:focus {
+            outline: 3px solid var(--jaune-orange);
+            outline-offset: 2px;
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+            .tagline {
+                font-size: 1rem;
+            }
+            .hero h2 {
+                font-size: 1.5rem;
+            }
+            .program-section h2,
+            .download-section h2 {
+                font-size: 1.5rem;
+            }
+            .accordion-header {
+                padding: 15px 20px;
+                font-size: 1rem;
+            }
+            .module-meta {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 15px;
+            }
+            header {
+                padding: 30px 0;
+            }
+            .hero {
+                padding: 40px 0;
+            }
+            .medical-icon-container {
+                width: 80px;
+                height: 80px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="container">
+            <div class="logo-container">
+                <img src="logo.png" alt="Logo APF France Handicap - Risquer l'impossible">
+            </div>
+            <h1>Parcours MSSanté</h1>
+            <p class="tagline">Formation Messagerie Sécurisée de Santé</p>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero">
+        <div class="container">
+            <div class="hero-content">
+                <h2>Maîtrisez la Messagerie Sécurisée de Santé</h2>
+                <p>Une formation <strong>modulaire</strong> et <strong>centrée apprenant</strong>, adaptée à votre profil professionnel.</p>
+            </div>
+            <div class="medical-icon-container">
+                <svg class="medical-icon" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                    <line x1="50" y1="15" x2="50" y2="85" stroke="var(--bleu-petrole)" stroke-width="6" stroke-linecap="round"/>
+                    <path d="M50 25 Q30 40 50 55 Q70 40 50 25" fill="none" stroke="var(--jaune-orange)" stroke-width="4" stroke-linecap="round"/>
+                    <path d="M50 20 L35 15 L50 10 L65 15 Z" fill="var(--jaune-orange)"/>
+                    <path d="M50 75 L35 80 L50 85 L65 80 Z" fill="var(--jaune-orange)"/>
+                    <path d="M50 22 Q45 18 50 15" fill="none" stroke="var(--jaune-orange)" stroke-width="1.5"/>
+                    <path d="M50 78 Q45 82 50 85" fill="none" stroke="var(--jaune-orange)" stroke-width="1.5"/>
+                </svg>
+            </div>
+        </div>
+    </section>
+
+    <!-- INFOS PRATIQUES -->
+    <section class="info-section">
+        <div class="container">
+            <div class="info-grid">
+                <div class="dates-lieu">
+                    <h3>Informations pratiques</h3>
+                    <p><strong>Dates :</strong> À venir</p>
+                    <p><strong>Lieu :</strong> 1 avenue Paul Langevin, 33600 Pessac</p>
+                    <p>Formation en présentiel avec accès aux outils numériques.</p>
+                </div>
+                <div class="map-container">
+                    <iframe
+                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2826.54321!2d-0.602588!3d44.804722!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47fc2f4a1b0b0b0b%3A0x123456789!2s1%20Avenue%20Paul%20Langevin%2C%2033600%20Pessac!5e0!3m2!1sfr!2sfr!4v1234567890"
+                        allowfullscreen=""
+                        loading="lazy"
+                        referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- PROGRAMME -->
+    <section class="program-section">
+        <div class="container">
+            <h2>Programme détaillé</h2>
+            <p style="text-align: center; margin-bottom: 30px; color: var(--gris-texte); font-size: 1.1rem;">
+                Une approche modulaire pour répondre aux besoins spécifiques de chaque profil.
+            </p>
+            <div class="accordion-container">
+                <button class="accordion-toggle-all">Tout ouvrir</button>
+                <div class="accordion">
+                    <!-- Module 0 -->
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span>Module 0 - Socle commun</span>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <h3>Module 0 - Socle commun</h3>
+                            <div class="module-meta">
+                                <span>⏱️ 25-30 min</span>
+                                <span>👥 Tous les profils</span>
+                            </div>
+                            <p><strong>Objectif :</strong> Créer un langage commun et donner du sens à l'outil avant toute pratique.</p>
+                            <p><strong>Contenu :</strong></p>
+                            <ul>
+                                <li>Pourquoi MSSanté existe et son cadre réglementaire</li>
+                                <li>Différence entre Médimail et NETVie</li>
+                                <li>Parcours global d'un message sécurisé</li>
+                                <li>Les 5 erreurs les plus fréquentes et comment les éviter</li>
+                            </ul>
+                            <p><strong>Critère de réussite :</strong> Expliquer en 1 minute ce qu'est MSSanté et à quoi ça sert.</p>
+                        </div>
+                    </div>
+                    <!-- Module A -->
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span>Module A - Parcours Utilisateur PER</span>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <h3>Module A - Parcours Utilisateur PER</h3>
+                            <div class="module-meta">
+                                <span>⏱️ 25-30 min</span>
+                                <span>👤 Utilisateurs PER uniquement</span>
+                            </div>
+                            <p><strong>Objectif :</strong> Être autonome dans l'utilisation quotidienne de sa boîte MSS.</p>
+                            <p><strong>Contenu :</strong></p>
+                            <ul>
+                                <li>Accès à la boîte PER</li>
+                                <li>Envoi et réception d'un message sécurisé</li>
+                                <li>Bonnes pratiques et règles d'usage</li>
+                                <li>Que faire en cas de problème</li>
+                            </ul>
+                            <p><strong>Critère de réussite :</strong> Envoyer avec succès un message test à une adresse dédiée.</p>
+                        </div>
+                    </div>
+                    <!-- Module B -->
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span>Module B - Parcours Utilisateur MED</span>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <h3>Module B - Parcours Utilisateur MED</h3>
+                            <div class="module-meta">
+                                <span>⏱️ 30-40 min</span>
+                                <span>👨‍⚕️ Professionnels MED uniquement</span>
+                            </div>
+                            <p><strong>Objectif :</strong> Maîtriser sa boîte MED et son intégration dans NETVie.</p>
+                            <p><strong>Contenu :</strong></p>
+                            <ul>
+                                <li>Logique MED vs ORG</li>
+                                <li>Lien avec l'identité professionnelle (RPPS)</li>
+                                <li>Rattachement à une structure</li>
+                                <li>Utilisation dans NETVie pour la coordination de soins</li>
+                            </ul>
+                            <p><strong>Critère de réussite :</strong> Identifier correctement le type de boîte approprié dans 3 situations proposées.</p>
+                        </div>
+                    </div>
+                    <!-- Module C -->
+                    <div class="accordion-item">
+                        <button class="accordion-header">
+                            <span>Module C - Parcours Référent MSS</span>
+                            <span class="accordion-icon">+</span>
+                        </button>
+                        <div class="accordion-content">
+                            <h3>Module C - Parcours Référent MSS</h3>
+                            <div class="module-meta">
+                                <span>⏱️ 50-70 min</span>
+                                <span>🎯 Référents uniquement</span>
+                            </div>
+                            <p><strong>Objectif :</strong> Piloter en autonomie le dispositif MSS de sa structure et accompagner ses collègues.</p>
+                            <p><strong>Contenu :</strong></p>
+                            <ul>
+                                <li>Création et gestion des boîtes MED / ORG / PER</li>
+                                <li>Logique d'attribution et droits d'accès</li>
+                                <li>Paramétrage NETVie pour la structure</li>
+                                <li>Diagnostic et résolution des 5 incidents les plus fréquents</li>
+                                <li>Techniques d'accompagnement des collègues</li>
+                            </ul>
+                            <p><strong>Critère de réussite :</strong> Créer un environnement MSS fonctionnel pour une structure fictive et résoudre 2 incidents simulés de façon autonome.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TÉLÉCHARGEMENTS -->
+    <section class="download-section">
+        <div class="container">
+            <h2>Téléchargements</h2>
+            <a href="programme.pdf" class="btn-download" download>📄 Télécharger le programme complet (PDF)</a>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="container">
+            <p>Formation proposée par APF France Handicap - <em>Risquer l'impossible</em></p>
+        </div>
+    </footer>
+
+    <!-- JavaScript pour l'accordéon -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleAllBtn = document.querySelector('.accordion-toggle-all');
+            const accordionItems = document.querySelectorAll('.accordion-item');
+
+            function updateIcon(item, isOpen) {
+                const icon = item.querySelector('.accordion-icon');
+                icon.textContent = isOpen ? '−' : '+';
+            }
+
+            toggleAllBtn.addEventListener('click', function() {
+                const allOpen = Array.from(accordionItems).every(item =>
+                    item.classList.contains('active')
+                );
+
+                accordionItems.forEach(item => {
+                    const content = item.querySelector('.accordion-content');
+                    if (allOpen) {
+                        item.classList.remove('active');
+                        content.classList.remove('active');
+                        updateIcon(item, false);
+                    } else {
+                        item.classList.add('active');
+                        content.classList.add('active');
+                        updateIcon(item, true);
+                    }
+                });
+
+                toggleAllBtn.textContent = allOpen ? 'Tout ouvrir' : 'Tout fermer';
+            });
+
+            accordionItems.forEach(item => {
+                const header = item.querySelector('.accordion-header');
+                header.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    const content = item.querySelector('.accordion-content');
+                    const isActive = item.classList.contains('active');
+
+                    if (isActive) {
+                        item.classList.remove('active');
+                        content.classList.remove('active');
+                        updateIcon(item, false);
+                    } else {
+                        item.classList.add('active');
+                        content.classList.add('active');
+                        updateIcon(item, true);
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
